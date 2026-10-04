@@ -1,6 +1,8 @@
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
 const locationBtn = document.getElementById("locationBtn");
+const forecastContainer =
+    document.getElementById("forecastContainer");
 const cityName = document.getElementById("cityName");
 const weatherIcon = document.getElementById("weatherIcon");
 const temperature = document.getElementById("temperature");
@@ -82,6 +84,7 @@ async function getWeather() {
         const weatherData = await weatherResponse.json();
 
         const current = weatherData.current;
+        displayForecast(weatherData.daily);
 
 
         // Display city
@@ -226,7 +229,7 @@ function getLocationWeather() {
             try {
 
                 const response = await fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`
+                   `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=5&timezone=auto` 
                 );
 
                 const data = await response.json();
@@ -273,4 +276,47 @@ function getLocationWeather() {
 
     );
 
+}
+// Display 5-day forecast
+
+function displayForecast(daily) {
+
+    forecastContainer.innerHTML = "";
+
+    for (let i = 0; i < 5; i++) {
+
+        const date = new Date(daily.time[i]);
+
+        const formattedDate = date.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short"
+        });
+
+        const weatherInfo =
+            getWeatherInfo(daily.weather_code[i]);
+
+        const card = document.createElement("div");
+
+        card.className = "forecast-card";
+
+        card.innerHTML = `
+            <div class="forecast-date">
+                ${formattedDate}
+            </div>
+
+            <div class="forecast-icon">
+                ${weatherInfo.icon}
+            </div>
+
+            <div class="forecast-temperature">
+                ${Math.round(daily.temperature_2m_max[i])}°C
+            </div>
+
+            <div class="forecast-description">
+                ${weatherInfo.description}
+            </div>
+        `;
+
+        forecastContainer.appendChild(card);
+    }
 }
