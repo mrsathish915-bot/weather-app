@@ -72,18 +72,18 @@ async function getWeather() {
         // Get weather data
 
         const weatherResponse = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`
-        );
+            
 
 
         if (!weatherResponse.ok) {
             throw new Error("Unable to get weather data.");
         }
 
-
+`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=5&timezone=auto`
         const weatherData = await weatherResponse.json();
 
         const current = weatherData.current;
+        displayForecast(data.daily);
         displayForecast(weatherData.daily);
 
 
