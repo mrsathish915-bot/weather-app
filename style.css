@@ -204,3 +204,23 @@ footer {
         font-size: 38px;
     }
 }
+/* Location Button */
+
+.location-btn {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: 2px solid #0284c7;
+    border-radius: 8px;
+    background: white;
+    color: #0284c7;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.location-btn:hover {
+    background: #0284c7;
+    color: white;
+}
