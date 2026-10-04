@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🌤️ Weather App</h1>
+        <p>Check the current weather of any city</p>
+    </header>
+
+
+    <main>
+
+        <!-- Search Section -->
+
+        <section class="search-section">
+
+            <h2>Search City</h2>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name"
+                >
+
+                <button id="searchBtn">
+                    Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Weather Card -->
+
+        <section class="weather-card" id="weatherCard">
+
+            <h2 id="cityName">City Name</h2>
+
+            <div class="weather-icon" id="weatherIcon">
+                🌤️
+            </div>
+
+            <h3 id="temperature">
+                --°C
+            </h3>
+
+            <p id="weatherDescription">
+                Weather condition
+            </p>
+
+
+            <div class="weather-details">
+
+                <div class="detail">
+                    <span>💧</span>
+                    <p>Humidity</p>
+                    <strong id="humidity">--%</strong>
+                </div>
+
+                <div class="detail">
+                    <span>💨</span>
+                    <p>Wind Speed</p>
+                    <strong id="windSpeed">-- km/h</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Error Message -->
+
+        <p id="errorMessage"></p>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 M R SATHISH | Weather App
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
