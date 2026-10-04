@@ -1,6 +1,6 @@
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
-
+const locationBtn = document.getElementById("locationBtn");
 const cityName = document.getElementById("cityName");
 const weatherIcon = document.getElementById("weatherIcon");
 const temperature = document.getElementById("temperature");
@@ -13,7 +13,7 @@ const errorMessage = document.getElementById("errorMessage");
 // Search weather when button is clicked
 
 searchBtn.addEventListener("click", getWeather);
-
+locationBtn.addEventListener("click", getLocationWeather);
 
 // Also search when Enter is pressed
 
@@ -201,5 +201,76 @@ function getWeatherInfo(code) {
         description: "Unknown weather",
         icon: "🌤️"
     };
+
+}
+// Get weather using current location
+
+function getLocationWeather() {
+
+    if (!navigator.geolocation) {
+        errorMessage.textContent =
+            "Geolocation is not supported by your browser.";
+        return;
+    }
+
+    errorMessage.textContent =
+        "Getting your location...";
+
+    navigator.geolocation.getCurrentPosition(
+
+        async function(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            try {
+
+                const response = await fetch(
+                    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`
+                );
+
+                const data = await response.json();
+
+                const current = data.current;
+
+                cityName.textContent = "📍 Your Location";
+
+                temperature.textContent =
+                    `${Math.round(current.temperature_2m)}°C`;
+
+                humidity.textContent =
+                    `${current.relative_humidity_2m}%`;
+
+                windSpeed.textContent =
+                    `${current.wind_speed_10m} km/h`;
+
+                const weatherInfo =
+                    getWeatherInfo(current.weather_code);
+
+                weatherIcon.textContent =
+                    weatherInfo.icon;
+
+                weatherDescription.textContent =
+                    weatherInfo.description;
+
+                errorMessage.textContent = "";
+
+            } catch (error) {
+
+                errorMessage.textContent =
+                    "Unable to get weather data.";
+
+            }
+
+        },
+
+        function() {
+
+            errorMessage.textContent =
+                "Please allow location access to use this feature.";
+
+        }
+
+    );
 
 }
