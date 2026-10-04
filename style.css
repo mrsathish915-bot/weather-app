@@ -219,7 +219,67 @@ footer {
     font-weight: bold;
     cursor: pointer;
 }
+/* 5-Day Forecast */
 
+.forecast-section {
+    background: white;
+    padding: 30px;
+    margin-top: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-section h2 {
+    text-align: center;
+    color: #0369a1;
+    margin-bottom: 25px;
+}
+
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.forecast-card {
+    background: #f0f9ff;
+    padding: 18px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.forecast-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.forecast-icon {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.forecast-temperature {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0369a1;
+}
+
+.forecast-description {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+
+/* Forecast Mobile */
+
+@media (max-width: 700px) {
+
+    .forecast-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
 .location-btn:hover {
     background: #0284c7;
     color: white;
