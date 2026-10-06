@@ -17,40 +17,41 @@
         <p>Check the current weather of any city</p>
     </header>
 
-
     <main>
 
         <!-- Search Section -->
-
         <section class="search-section">
 
             <h2>Search City</h2>
-<div class="search-box">
 
-    <input
-        type="text"
-        id="cityInput"
-        placeholder="Enter city name"
-    >
+            <div class="search-box">
 
-    <button id="searchBtn">
-        Search
-    </button>
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name"
+                    autocomplete="off"
+                >
 
-</div>
+                <button id="searchBtn">
+                    Search
+                </button>
 
-<button id="locationBtn" class="location-btn">
-    📍 Use My Location
-</button>
-           
+            </div>
+
+            <button id="locationBtn" class="location-btn">
+                📍 Use My Location
+            </button>
+
         </section>
 
 
         <!-- Weather Card -->
+        <section class="weather-card">
 
-        <section class="weather-card" id="weatherCard">
-
-            <h2 id="cityName">City Name</h2>
+            <h2 id="cityName">
+                City Name
+            </h2>
 
             <div class="weather-icon" id="weatherIcon">
                 🌤️
@@ -65,37 +66,44 @@
             </p>
 
 
+            <!-- Weather Details -->
             <div class="weather-details">
 
                 <div class="detail">
+
                     <span>💧</span>
-                    <p>Humidity</p>
-                    <strong id="humidity">--%</strong>
+
+                    <p>
+                        Humidity
+                    </p>
+
+                    <strong id="humidity">
+                        --%
+                    </strong>
+
                 </div>
 
+
                 <div class="detail">
+
                     <span>💨</span>
-                    <p>Wind Speed</p>
-                    <strong id="windSpeed">-- km/h</strong>
+
+                    <p>
+                        Wind Speed
+                    </p>
+
+                    <strong id="windSpeed">
+                        -- km/h
+                    </strong>
+
                 </div>
 
             </div>
 
         </section>
 
-<!-- 5 Day Forecast -->
 
-<section class="forecast-section">
-
-    <h2>5-Day Forecast</h2>
-
-    <div class="forecast-container" id="forecastContainer">
-
-    </div>
-
-</section>
         <!-- Error Message -->
-
         <p id="errorMessage"></p>
 
     </main>
