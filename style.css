@@ -56,6 +56,9 @@ main {
     color: #0369a1;
 }
 
+
+/* Search Box */
+
 .search-box {
     display: flex;
     gap: 10px;
@@ -74,6 +77,9 @@ main {
     border-color: #0284c7;
 }
 
+
+/* Search Button */
+
 .search-box button {
     padding: 14px 22px;
     border: none;
@@ -83,10 +89,44 @@ main {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .search-box button:hover {
     background: #0369a1;
+}
+
+.search-box button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+
+/* Location Button */
+
+.location-btn {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: 2px solid #0284c7;
+    border-radius: 8px;
+    background: white;
+    color: #0284c7;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.location-btn:hover {
+    background: #0284c7;
+    color: white;
+}
+
+.location-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 
@@ -154,7 +194,7 @@ main {
 }
 
 
-/* Error */
+/* Error Message */
 
 #errorMessage {
     color: #dc2626;
@@ -183,6 +223,10 @@ footer {
         font-size: 28px;
     }
 
+    main {
+        padding: 25px 15px;
+    }
+
     .search-box {
         flex-direction: column;
     }
@@ -203,84 +247,8 @@ footer {
     #temperature {
         font-size: 38px;
     }
-}
-/* Location Button */
 
-.location-btn {
-    display: block;
-    width: 100%;
-    margin-top: 15px;
-    padding: 13px;
-    border: 2px solid #0284c7;
-    border-radius: 8px;
-    background: white;
-    color: #0284c7;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-/* 5-Day Forecast */
-
-.forecast-section {
-    background: white;
-    padding: 30px;
-    margin-top: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.forecast-section h2 {
-    text-align: center;
-    color: #0369a1;
-    margin-bottom: 25px;
-}
-
-.forecast-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-}
-
-.forecast-card {
-    background: #f0f9ff;
-    padding: 18px 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.forecast-date {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.forecast-icon {
-    font-size: 35px;
-    margin-bottom: 8px;
-}
-
-.forecast-temperature {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0369a1;
-}
-
-.forecast-description {
-    font-size: 13px;
-    color: #64748b;
-    margin-top: 5px;
-}
-
-
-/* Forecast Mobile */
-
-@media (max-width: 700px) {
-
-    .forecast-container {
-        grid-template-columns: repeat(2, 1fr);
+    #cityName {
+        font-size: 24px;
     }
-
-}
-.location-btn:hover {
-    background: #0284c7;
-    color: white;
 }
